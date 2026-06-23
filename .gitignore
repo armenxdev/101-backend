@@ -50,4 +50,4 @@ storage/
 docker-compose.override.yml
 
 # optional lock cleanup (не обязательно)
-# yarn.lock
+#yarn.lock  

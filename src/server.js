@@ -44,11 +44,6 @@ const start = async () => {
         console.log('[DB] Connection established.');
 
 
-        // if (process.env.NODE_ENV === 'development') {
-        //     await sequelize.sync({ alter: true });
-        //     console.log('[DB] Schema synced.');
-        // }
-
         app.listen(PORT, () => console.log(`[Server] Running on port ${PORT}`));
     } catch (err) {
         console.error('[Server] Failed to start:', err);
