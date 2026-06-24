@@ -1,0 +1,30 @@
+const { DataTypes } = require('sequelize');
+const { sequelize } = require('../config/database');
+
+const RefreshToken = sequelize.define('RefreshToken', {
+  id: {
+    type: DataTypes.INTEGER.UNSIGNED,
+    autoIncrement: true,
+    primaryKey: true,
+  },
+  userId: {
+    type: DataTypes.INTEGER.UNSIGNED,
+    allowNull: false,
+    field: 'user_id',
+  },
+  token: {
+    type: DataTypes.STRING(512),
+    allowNull: false,
+    unique: true,
+  },
+  expiresAt: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    field: 'expires_at',
+  },
+}, {
+  tableName: 'refresh_tokens',
+  updatedAt: false,
+});
+
+module.exports = RefreshToken;
