@@ -28,9 +28,6 @@ const allowedOrigins = [
   'https://onehundredone.vercel.app',
 ];
 
-app.use(helmet());
-app.use(generalLimiter);
-app.use('/api/auth', authLimiter);
 
 app.use(cors({
   origin(origin, callback) {
@@ -45,6 +42,9 @@ app.use(cors({
   credentials: true,
 }));
 
+app.use(helmet());
+app.use(generalLimiter);
+app.use('/api/auth', authLimiter);
 
 app.use(cookieParser());
 
