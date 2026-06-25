@@ -159,7 +159,7 @@ const verifyEmail = async ({ email, code }, res) => {
 
   const user = await userRepository.createUser({
     username: payload.username,
-    email: payload.email,
+    email: email,
     password: payload.password,
     emailVerified: true,
   });
