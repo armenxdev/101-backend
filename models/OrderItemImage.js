@@ -24,7 +24,17 @@ const OrderItemImage = sequelize.define('OrderItemImage', {
   },
 }, {
   tableName: 'order_item_images',
-  timestamps: false,
+  timestamps: true,
+  underscored: true,
+
+  indexes: [
+    {
+      fields: ['order_item_id'],
+    },
+    {
+      fields: ['order_item_id', 'sort_order'],
+    }
+  ]
 });
 
 module.exports = OrderItemImage;

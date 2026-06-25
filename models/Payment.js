@@ -43,7 +43,26 @@ const Payment = sequelize.define('Payment', {
   },
 }, {
   tableName: 'payments',
+  timestamps: true,
   updatedAt: false,
+  underscored: true,
+
+  indexes: [
+    {
+      unique: true,
+      fields: ['public_id'],
+    },
+    {
+      unique: true,
+      fields: ['order_id_paypal'],
+    },
+    {
+      fields: ['user_id'],
+    },
+    {
+      fields: ['status'],
+    }
+  ]
 });
 
 module.exports = Payment;

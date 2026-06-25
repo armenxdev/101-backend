@@ -32,6 +32,19 @@ const TempUser = sequelize.define('TempUser', {
   },
 }, {
   tableName: 'temp_users',
+  timestamps: true,       // Միացնում է created_at և updated_at դաշտերը (կարևոր է ժամկետները հասկանալու համար)
+  underscored: true,      // Ավտոմատ դարձնում է snake_case բազայի մակարդակով
+
+  // Ինդեքսների ավելացում արագագործության համար
+  indexes: [
+    {
+      unique: true,
+      fields: ['email'],  // Արագ փնտրում միայն էլ. փոստով
+    },
+    {
+      fields: ['email', 'verification_code'], // Composite index՝ կոդի վավերացումը ակնթարթային դարձնելու համար
+    }
+  ]
 });
 
 module.exports = TempUser;

@@ -26,6 +26,14 @@ const UserOrder = sequelize.define('UserOrder', {
   },
 }, {
   tableName: 'user_orders',
+  timestamps: true,
+  underscored: true,
+
+  indexes: [
+    {
+      fields: ['user_id'],
+    }
+  ]
 });
 
 module.exports = UserOrder;

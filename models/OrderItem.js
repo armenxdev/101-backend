@@ -40,7 +40,20 @@ const OrderItem = sequelize.define('OrderItem', {
   },
 }, {
   tableName: 'order_items',
-  timestamps: false,
+  timestamps: true,
+  underscored: true,
+
+  indexes: [
+    {
+      fields: ['order_id'],
+    },
+    {
+      fields: ['product_id'],
+    },
+    {
+      fields: ['product_external_id'],
+    }
+  ]
 });
 
 module.exports = OrderItem;

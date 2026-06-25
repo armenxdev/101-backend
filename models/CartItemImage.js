@@ -24,7 +24,17 @@ const CartItemImage = sequelize.define('CartItemImage', {
   },
 }, {
   tableName: 'cart_item_images',
-  timestamps: false,
+  timestamps: true,
+  underscored: true,
+
+  indexes: [
+    {
+      fields: ['cart_item_id'],
+    },
+    {
+      fields: ['cart_item_id', 'sort_order'],
+    }
+  ]
 });
 
 module.exports = CartItemImage;

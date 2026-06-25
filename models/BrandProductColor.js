@@ -18,7 +18,17 @@ const BrandProductColor = sequelize.define('BrandProductColor', {
   },
 }, {
   tableName: 'brand_product_colors',
-  timestamps: false,
+  timestamps: true,
+  underscored: true,
+
+  indexes: [
+    {
+      fields: ['brand_product_id'],
+    },
+    {
+      fields: ['color'],
+    }
+  ]
 });
 
 module.exports = BrandProductColor;

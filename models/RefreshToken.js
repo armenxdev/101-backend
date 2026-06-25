@@ -24,7 +24,22 @@ const RefreshToken = sequelize.define('RefreshToken', {
   },
 }, {
   tableName: 'refresh_tokens',
+  timestamps: true,
   updatedAt: false,
+  underscored: true,
+
+  indexes: [
+    {
+      unique: true,
+      fields: ['token'],
+    },
+    {
+      fields: ['user_id'],
+    },
+    {
+      fields: ['expires_at'],
+    }
+  ]
 });
 
 module.exports = RefreshToken;

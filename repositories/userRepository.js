@@ -9,15 +9,23 @@ const findByEmail = (email) =>
 const findByUsername = (username) =>
   User.findOne({ where: { username } });
 
-const findByIdentifier = (identifier) =>
-  User.findOne({
-    where: {
-      [require('sequelize').Op.or]: [
-        { email: identifier },
-        { username: identifier },
-      ],
-    },
-  });
+const findByIdentifier = async (identifier) => {
+  try {
+    return await User.findOne({
+      where: {
+        [require('sequelize').Op.or]: [
+          { email: identifier },
+          { username: identifier },
+        ],
+      },
+    });
+  } catch (error) {
+    console.log("=============== MYSQL ERROR ===============");
+    console.error(error.original ? error.original.message : error.message);
+    console.log("===========================================");
+    throw error;
+  }
+};
 
 const createUser = (data) => User.create(data);
 

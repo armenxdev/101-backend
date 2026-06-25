@@ -19,7 +19,7 @@ const orderRoutes = require('./routes/orderRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
 
 const app = express();
-
+app.use(express.json());
 app.set('trust proxy', 1);
 
 const allowedOrigins = [
@@ -45,7 +45,7 @@ app.use(cors({
   credentials: true,
 }));
 
-app.use(express.json());
+
 app.use(cookieParser());
 
 app.use('/api/reviews', reviewRoutes);

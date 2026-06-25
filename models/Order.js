@@ -31,6 +31,24 @@ const Order = sequelize.define('Order', {
   },
 }, {
   tableName: 'orders',
+  timestamps: true,
+  underscored: true,
+
+  indexes: [
+    {
+      unique: true,
+      fields: ['public_id'],
+    },
+    {
+      fields: ['user_id'],
+    },
+    {
+      fields: ['status'],
+    },
+    {
+      fields: ['status', 'created_at'],
+    }
+  ]
 });
 
 module.exports = Order;

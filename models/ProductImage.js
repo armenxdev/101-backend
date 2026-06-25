@@ -29,7 +29,17 @@ const ProductImage = sequelize.define('ProductImage', {
   },
 }, {
   tableName: 'product_images',
-  timestamps: false,
+  timestamps: true,
+  underscored: true,
+
+  indexes: [
+    {
+      fields: ['product_id'],
+    },
+    {
+      fields: ['product_id', 'sort_order'],
+    }
+  ]
 });
 
 module.exports = ProductImage;

@@ -49,6 +49,28 @@ const BrandProduct = sequelize.define('BrandProduct', {
   },
 }, {
   tableName: 'brand_products',
+  timestamps: true,
+  underscored: true,
+
+
+  indexes: [
+    {
+      unique: true,
+      fields: ['public_id'],
+    },
+    {
+      fields: ['category'],
+    },
+    {
+      fields: ['visible', 'sort_order'],
+    },
+    {
+      fields: ['is_popular'],
+    },
+    {
+      fields: ['is_new_products'],
+    }
+  ]
 });
 
 module.exports = BrandProduct;
